@@ -37,7 +37,6 @@ var roleRepairman = {
                 if (creep.repair(repairrepair[rndRepair]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(repairrepair[rndRepair]);
                 }
-                creep.say('Rpr' + repairrepair.structureType)
             }
         }
     }
