@@ -33,8 +33,9 @@ var roleWallman = {
                 }
             });
             if ((repairwall.length > 0) && (creep.carry.energy > 0)) {
-                if (creep.repair(repairwall[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(repairwall[0]);
+                var rndRepairWall = Math.floor(Math.random() * repairwall.length);
+                if (creep.repair(repairwall[rndRepairWall]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(repairwall[rndRepairWall]);
                 }
             }
         }
