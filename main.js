@@ -7,6 +7,8 @@ var roleWallman = require('role.wallman');
 var roleRoadman = require('role.roadman');
 var roleRepairman = require('role.repairman');
 
+//testing
+
 module.exports.loop = function () {
     
     var tower1 = Game.getObjectById('5833ebd0cda4dbd10619a140');
