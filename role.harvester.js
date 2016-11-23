@@ -25,14 +25,6 @@ var roleHarvester = {
             }
         }
         else {
-            var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
-            filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
-            if (dropenergy) {
-                creep.say('Picking Up');
-                if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(dropenergy);
-                }
-            }
             var Container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] >200
             })
