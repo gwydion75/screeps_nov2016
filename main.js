@@ -74,7 +74,7 @@ module.exports.loop = function () {
     var repairmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairman');
     var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
     
-    if(claimers.length < 10) {
+    if(claimers.length < 5) {
         var newName = Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: 'claimer'});
         console.log('Spawning new claimer: ' + newName);
     }
@@ -90,15 +90,15 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + newName);
     }
-    if(miners.length < 6) {
+    if(miners.length < 4) {
         var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
         var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');
         var minersSouth = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'south');
-        if(minersLeft.length <2) {
+        if(minersLeft.length <1) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
             console.log('Spawning new LEFT miner: ' + newName);
         }
-        if(minersRight.length <2) {
+        if(minersRight.length <1) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
             console.log('Spawning new RIGHT miner: ' + newName);
         }
