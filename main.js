@@ -107,7 +107,7 @@ module.exports.loop = function () {
             }
             if(guards.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([ATTACK,ATTACK,ATTACK,TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE], undefined, {role: 'guard'});
-                console.log('Spawning new harvester: ' + newName);
+                console.log('Spawning new guard: ' + newName);
             }
             if(harvesters.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
