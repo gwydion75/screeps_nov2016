@@ -42,7 +42,7 @@ var roleMiner = {
         else if (creep.memory.mineside == 'south') {   
             var southRoom = 'E29N63';
             if(creep.room.name != southRoom) {
-                creep.moveTo(creep.pos.findNearest(creep.room.findExitTo(southRoom)));
+                creep.moveTo(creep.room.findExitTo(southRoom));
             }
             else { 
                 if(creep.harvest(SouthMine) == ERR_NOT_IN_RANGE) {
