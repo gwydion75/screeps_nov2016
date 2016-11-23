@@ -43,6 +43,7 @@ var archer = {
 	
 	 * @TODO: We need to get archers to prioritise their targets better
 	 */
+var roleArcher = {
 	action: function()
 	{
 		var creep = this.creep;
