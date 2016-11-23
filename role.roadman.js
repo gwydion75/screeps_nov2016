@@ -65,8 +65,9 @@ var roleRoadman = {
                 if (creep.repair(repairNorthRoad[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(repairNorthRoad[0]);
                 }
-            else if (repairNorthRoad.length == 0) {
+                else if (repairNorthRoad.length == 0) {
                 creep.moveTo(Game.flags.Rally2);
+                }
             }
         }
     }
