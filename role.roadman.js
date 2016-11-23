@@ -22,9 +22,10 @@ var roleRoadman = {
             if (!creep.memory.south) {
                 var Container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] >0
-            })
-            if(creep.withdraw(Container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Container);
+                })
+                if(creep.withdraw(Container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Container);
+                }
             }
             else {
                 if(creep.room.name != southRoom) {
