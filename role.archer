@@ -1,8 +1,6 @@
 var roleArcher = {
-	action: function()
+	run: function(creep)
 	{
-		var creep = this.creep;
-
 		var target = this.getRangedTarget();
 		if(target !== null)
 
