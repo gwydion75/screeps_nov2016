@@ -40,6 +40,7 @@ var roleRepairman = {
             }
             else {
                 creep.moveTo(Game.flags.Rally1);
+            }
         }
     }
 }
