@@ -50,7 +50,7 @@ var roleRoadman = {
                         creep.moveTo(repairSouthRoad[0]);
                     }
                 }
-                else if (creep.memory.south && repairroad.length == 0) {
+                else if (creep.memory.south && repairSouthRoad.length == 0) {
                     creep.moveTo(Game.flags.Rally1);
                 }
             }
