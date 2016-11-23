@@ -10,7 +10,7 @@ var roleHarvester = {
             creep.memory.delivering = false;
             creep.say('Gathering');
         }
-        if(creep.memory.gathering) {
+        if(!creep.memory.delivering) {
             var Container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] >0
             })
