@@ -126,6 +126,10 @@ module.exports.loop = function () {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'roadman', roading: 'false'});
                 console.log('Spawning new roadman: ' + newName);
             }
+            if(roadmans.length < 4 && roadmans.length > 1) {   
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'roadman', roading: 'false', south: 'true'});
+                console.log('Spawning new roadman: ' + newName);
+            }
             if(repairmans.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairman', repairing: 'false'});
                 console.log('Spawning new repairman: ' + newName);
