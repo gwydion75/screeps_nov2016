@@ -1,5 +1,4 @@
 var roleClaimer = {
-
     run: function(creep) {
             var southRoom = 'E29N63';
             if(creep.room.name != southRoom) {
@@ -9,4 +8,4 @@ var roleClaimer = {
     }
 };
 
-module.exports = roleClaimer
+module.exports = roleClaimer;
