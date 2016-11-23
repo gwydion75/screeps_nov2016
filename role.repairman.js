@@ -33,9 +33,9 @@ var roleRepairman = {
                 }
             });
             if ((repairrepair.length > 0) && (creep.carry.energy > 0)) {
-                var rndRepair = Math.floor(Math.random() * repairrepair.length);
-                if (creep.repair(repairrepair[rndRepair]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(repairrepair[rndRepair]);
+                //var rndRepair = Math.floor(Math.random() * repairrepair.length);
+                if (creep.repair(repairrepair[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(repairrepair[0]);
                 }
             }
         }
