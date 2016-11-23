@@ -1,4 +1,4 @@
-var proto = require('role_prototype');
+/* var proto = require('role_prototype');
 
 var archer = {
 	parts: [
@@ -40,7 +40,7 @@ var archer = {
 		return parts;
 	},
 
-	/**
+	
 	 * @TODO: We need to get archers to prioritise their targets better
 	 */
 	action: function()
