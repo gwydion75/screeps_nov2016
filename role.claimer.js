@@ -2,7 +2,7 @@ var roleClaimer = {
     run: function(creep) {
         var southRoom = 'E29N63';
         if(creep.room.name != southRoom) {
-            creep.moveTo(creep.pos.findClosestByRange(creep.room.findExitTo(southRoom)));
+            creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
         }
         if(creep.room.name == southRoom) {
             var range = creep.pos.getRangeTo(creep.room.controller);
