@@ -32,37 +32,36 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-    
-    for(var name in Game.creeps) {
-        var creep = Game.creeps[name];
-        if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
+        for(var name in Game.creeps) {
+            var creep = Game.creeps[name];
+            if(creep.memory.role == 'harvester') {
+                roleHarvester.run(creep);
+            }
+            if(creep.memory.role == 'upgrader') {
+                roleUpgrader.run(creep);
+            }
+            if(creep.memory.role == 'builder') {
+                roleBuilder.run(creep);
+            }
+            if(creep.memory.role == 'miner') {
+                roleMiner.run(creep);
+            }
+            if(creep.memory.role == 'maint') {
+                roleMaint.run(creep);
+            }
+            if(creep.memory.role == 'wallman') {
+                roleWallman.run(creep);
+            }
+            if(creep.memory.role == 'roadman') {
+                roleRoadman.run(creep);
+            }
+            if(creep.memory.role == 'repairman') {
+                roleRepairman.run(creep);
+            }
+            if(creep.memory.role == 'claimer') {
+                roleClaimer.run(creep);
+            }
         }
-        if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
-        if(creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
-        }
-        if(creep.memory.role == 'miner') {
-            roleMiner.run(creep);
-        }
-        if(creep.memory.role == 'maint') {
-            roleMaint.run(creep);
-        }
-        if(creep.memory.role == 'wallman') {
-            roleWallman.run(creep);
-        }
-        if(creep.memory.role == 'roadman') {
-            roleRoadman.run(creep);
-        }
-        if(creep.memory.role == 'repairman') {
-            roleRepairman.run(creep);
-        }
-        if(creep.memory.role == 'claimer') {
-            roleClaimer.run(creep);
-        }
-    }
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
@@ -73,54 +72,56 @@ module.exports.loop = function () {
     var roadmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'roadman');
     var repairmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairman');
     var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
-    
-    if(claimers.length < 5) {
-        var newName = Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: 'claimer'});
-        console.log('Spawning new claimer: ' + newName);
-    }
-    if(builders.length < 4) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'builder'});
-        console.log('Spawning new builder: ' + newName);
-    }
-    if(upgraders.length < 9) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'upgrader'});
-        console.log('Spawning new upgrader: ' + newName);
-    }
-    if(harvesters.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
-        console.log('Spawning new harvester: ' + newName);
-    }
-    if(miners.length < 4) {
-        var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
-        var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');
-        var minersSouth = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'south');
-        if(minersLeft.length <1) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
-            console.log('Spawning new LEFT miner: ' + newName);
+
+    if (!Game.spawns['Spawn1'].spawning) {
+        if(claimers.length < 5) {
+            var newName = Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: 'claimer'});
+            console.log('Spawning new claimer: ' + newName);
         }
-        if(minersRight.length <1) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
-            console.log('Spawning new RIGHT miner: ' + newName);
+        if(builders.length < 4) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'builder'});
+            console.log('Spawning new builder: ' + newName);
         }
-        if(minersSouth.length <2) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'south'});
-            console.log('Spawning new SOUTH miner: ' + newName);
+        if(upgraders.length < 9) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'upgrader'});
+            console.log('Spawning new upgrader: ' + newName);
         }
-    }
-    if(maints.length < 1) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'maint'});
-        console.log('Spawning new maint: ' + newName);
-    }
-    if(wallmans.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'wallman', walling: 'false'});
-        console.log('Spawning new wallman: ' + newName);
-    }
-    if(roadmans.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'roadman', roading: 'false'});
-        console.log('Spawning new roadman: ' + newName);
-    }
-    if(repairmans.length < 3) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairman', repairing: 'false'});
-        console.log('Spawning new repairman: ' + newName);
+        if(harvesters.length < 2) {
+            var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
+            console.log('Spawning new harvester: ' + newName);
+        }
+        if(miners.length < 4) {
+            var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
+            var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');
+            var minersSouth = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'south');
+            if(minersLeft.length <1) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
+                console.log('Spawning new LEFT miner: ' + newName);
+            }
+            if(minersRight.length <1) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
+                console.log('Spawning new RIGHT miner: ' + newName);
+            }
+            if(minersSouth.length <2) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'south'});
+                console.log('Spawning new SOUTH miner: ' + newName);
+            }
+        }
+        if(maints.length < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'maint'});
+            console.log('Spawning new maint: ' + newName);
+        }
+        if(wallmans.length < 2) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'wallman', walling: 'false'});
+            console.log('Spawning new wallman: ' + newName);
+        }
+        if(roadmans.length < 2) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'roadman', roading: 'false'});
+            console.log('Spawning new roadman: ' + newName);
+        }
+        if(repairmans.length < 3) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairman', repairing: 'false'});
+            console.log('Spawning new repairman: ' + newName);
+        }
     }
 }
