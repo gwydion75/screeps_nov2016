@@ -33,9 +33,9 @@ var roleRoadman = {
                 }
             });
             if ((repairroad.length > 0) && (creep.carry.energy > 0)) {
-                var rndRepairRoad = Math.floor(Math.random() * repairroad.length);
-                if (creep.repair(repairroad[rndRepairRoad]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(repairroad[rndRepairRoad]);
+                //var rndRepairRoad = Math.floor(Math.random() * repairroad.length);
+                if (creep.repair(repairroad[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(repairroad[0]);
                 }
             }
         }
