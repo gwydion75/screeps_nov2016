@@ -12,7 +12,7 @@ var archer = {
 	 * Here we want Archer to automatically scale to however many extensions we have
 	 * @returns {Array}
 	 */
-	getParts: function()
+	/*getParts: function()
 	{
 		var _= require('lodash');
 
