@@ -1,0 +1,8 @@
+            var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
+            filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
+            if (dropenergy) {
+                creep.say('Picking Up');
+                if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(dropenergy);
+                }
+            }
