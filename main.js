@@ -106,7 +106,7 @@ module.exports.loop = function () {
                 console.log('Spawning new archer: ' + newName);
             }
             if(guards.length < 2) {
-                var newName = Game.spawns['Spawn1'].createCreep([ATTACK,ATTACK,ATTACK,TOUGH,TOUGH,TOUCH,MOVE,MOVE,MOVE], undefined, {role: 'guard'});
+                var newName = Game.spawns['Spawn1'].createCreep([ATTACK,ATTACK,ATTACK,TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE], undefined, {role: 'guard'});
                 console.log('Spawning new harvester: ' + newName);
             }
             if(harvesters.length < 2) {
