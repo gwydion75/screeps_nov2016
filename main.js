@@ -94,12 +94,12 @@ module.exports.loop = function () {
             var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
             var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');
             var minersSouth = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'south');
-            if(minersLeft.length <1) {
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
+            if(minersLeft.length <2) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
                 console.log('Spawning new LEFT miner: ' + newName);
             }
-            if(minersRight.length <1) {
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
+            if(minersRight.length <2) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
                 console.log('Spawning new RIGHT miner: ' + newName);
             }
             if(minersSouth.length <2) {
