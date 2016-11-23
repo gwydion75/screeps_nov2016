@@ -80,9 +80,10 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + newName);
     }
-    if(miners.length < 4) {
+    if(miners.length < 6) {
         var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
         var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');
+        var minersSouth = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'south');
         if(minersLeft.length <2) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
             console.log('Spawning new LEFT miner: ' + newName);
@@ -90,6 +91,10 @@ module.exports.loop = function () {
         if(minersRight.length <2) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
             console.log('Spawning new RIGHT miner: ' + newName);
+        }
+        if(minersSouth.length <2) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'south'});
+            console.log('Spawning new SOUTH miner: ' + newName);
         }
     }
     if(maints.length < 1) {
