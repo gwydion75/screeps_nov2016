@@ -20,7 +20,7 @@ var roleTransporter = {
             if(creep.room.name != southRoom) {
               creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
             }
-            if(creep.room.name == southRoom) {
+            else if(creep.room.name == southRoom) {
                 if(creep.carry.energy < creep.carryCapacity) {
                     var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
                     filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
