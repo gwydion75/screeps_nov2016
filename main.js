@@ -74,7 +74,7 @@ module.exports.loop = function () {
     var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
 
     if (!Game.spawns['Spawn1'].spawning) {
-        if(claimers.length < 4) {
+        if(claimers.length < 2) {
             var newName = Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: 'claimer'});
             console.log('Spawning new claimer: ' + newName);
         }
