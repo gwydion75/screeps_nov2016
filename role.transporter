@@ -14,7 +14,7 @@ var roleTransporter = {
         }
         if(creep.memory.delivering) {
             if(creep.room.name != northRoom) {
-                creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
+                creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(northRoom)));
             }
             else if(creep.room.name == northRoom) {
                 if(creep.transfer(targetsTransporter, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
