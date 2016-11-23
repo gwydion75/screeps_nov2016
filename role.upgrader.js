@@ -25,7 +25,7 @@ var roleUpgrader = {
             creep.memory.upgrading = false;
             creep.say('Building');
         }
-        if(creep.memory.building && creep.carry.energy == creep.carryCapacity && targets.length) {
+        if(creep.memory.building && creep.carry.energy == creep.carryCapacity && !targets.length) {
             creep.memory.upgrading = true;
             creep.memory.gathering = false;
             creep.memory.building = false;
