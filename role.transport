@@ -1,0 +1,36 @@
+var roleTransporter = {
+
+    run: function(creep) {
+        if(creep.memory.delivering && creep.carry.energy < 50) {
+            creep.memory.delivering = false;
+            creep.say('Gathering');
+        }
+        if(!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.delivering = true;
+            creep.say('Delivering');
+        }
+        if(creep.memory.delivering) {
+            var targetsTransporter = Game.getObjectByID('58357720fe324f3b26ca7ba8');
+            if(creep.transfer(targetsTransporter, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(targetsTransporter);
+            }
+        }
+        else {
+            var southRoom = 'E29N63';
+            if(creep.room.name != southRoom) {
+              creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
+            }
+            if(creep.room.name == southRoom) {
+                if(creep.carry.energy < creep.carryCapacity) {
+                    var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
+                    filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
+                    if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(dropenergy);
+                    }
+                }
+            }
+        }
+    }
+};
+
+module.exports = roleTransporter;
