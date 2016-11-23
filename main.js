@@ -74,16 +74,16 @@ module.exports.loop = function () {
     var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
 
     if (!Game.spawns['Spawn1'].spawning) {
-        if(miners.length < 4) {
+        if(miners.length < 2) {
             var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
             var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');
             var minersSouth = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'south');
-            if(minersLeft.length <2) {
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
+            if(minersLeft.length <1) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'left'});
                 console.log('Spawning new LEFT miner: ' + newName);
             }
-            if(minersRight.length <2) {
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
+            if(minersRight.length <1) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'right'});
                 console.log('Spawning new RIGHT miner: ' + newName);
             }
             if(minersSouth.length <0) {
@@ -101,7 +101,7 @@ module.exports.loop = function () {
                 console.log('Spawning new builder: ' + newName);
             }*/
             if(upgraders.length < 8) {
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'upgrader'});
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'upgrader'});
                 console.log('Spawning new upgrader: ' + newName);
             }
             /*if(maints.length < 0) {
