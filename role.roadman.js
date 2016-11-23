@@ -19,11 +19,26 @@ var roleRoadman = {
         }
 
         if (!creep.memory.roading) {
-            var Container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+            if (!creep.memory.south) {
+                var Container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] >0
             })
             if(creep.withdraw(Container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(Container);
+            }
+            else {
+                if(creep.room.name != southRoom) {
+                    creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
+                }
+                else if(creep.room.name == southRoom) {
+                    if(creep.carry.energy < creep.carryCapacity) {
+                        var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
+                        filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
+                        if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(dropenergy);
+                        }
+                    }
+                }
             }
         }
         if (creep.memory.roading) {
