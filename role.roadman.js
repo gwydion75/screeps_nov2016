@@ -37,15 +37,21 @@ var roleRoadman = {
             }
         }
         if (creep.memory.roading) {
-            var repairroad = creep.room.find(FIND_STRUCTURES, { 
-                filter: (structure) => { 
-                    return (structure.structureType == STRUCTURE_ROAD && structure.hits < 1600 && structure.hits > 0)
-                }
-            });
-            if ((repairroad.length > 0) && (creep.carry.energy > 0)) {
-                //var rndRepairRoad = Math.floor(Math.random() * repairroad.length);
-                if (creep.repair(repairroad[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(repairroad[0]);
+            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(targets[0]);
+            }
+            if (targets.length == 0) {
+                var repairroad = creep.room.find(FIND_STRUCTURES, { 
+                    filter: (structure) => { 
+                        return (structure.structureType == STRUCTURE_ROAD && structure.hits < 1600 && structure.hits > 0)
+                    }
+                });
+                if ((repairroad.length > 0) && (creep.carry.energy > 0)) {
+                    //var rndRepairRoad = Math.floor(Math.random() * repairroad.length);
+                    if (creep.repair(repairroad[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(repairroad[0]);
+                    }
                 }
             }
             else if (!creep.memory.south) {
