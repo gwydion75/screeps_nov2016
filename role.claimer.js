@@ -5,8 +5,12 @@ var roleClaimer = {
             creep.moveTo(creep.pos.findClosestByRange(creep.room.findExitTo(southRoom)));
         }
         if(creep.room.name == southRoom) {
-            if(creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+            var range = creep.pos.getRangeTo(creep.room.controller);
+            if (range>1) {
                 creep.moveTo(creep.room.controller);
+            }
+            else {
+                creep.reserveController(creep.room.controller);
             }
         }
     }
