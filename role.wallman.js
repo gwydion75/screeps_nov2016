@@ -29,7 +29,7 @@ var roleWallman = {
         if (creep.memory.walling) {
             var repairwall = creep.room.find(FIND_STRUCTURES, { 
                 filter: (structure) => { 
-                    return (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000 && structure.hits > 0 || structure.hits < 5000 && structure.hits > 0 && structure.structureType == STRUCTURE_WALL)
+                    return (structure.structureType == STRUCTURE_RAMPART && structure.hits < 10000 && structure.hits > 0 || structure.hits < 5000 && structure.hits > 0 && structure.structureType == STRUCTURE_WALL)
                 }
             });
             if ((repairwall.length > 0) && (creep.carry.energy > 0)) {
