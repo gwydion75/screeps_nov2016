@@ -1,4 +1,6 @@
 var targetsTransporter = Game.getObjectById('58357720fe324f3b26ca7ba8');
+var southRoom = 'E29N63';
+var northRoom = 'E29N64';
 var roleTransporter = {
 
     run: function(creep) {
@@ -11,12 +13,16 @@ var roleTransporter = {
             creep.say('Delivering');
         }
         if(creep.memory.delivering) {
-            if(creep.transfer(targetsTransporter, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(targetsTransporter);
+            if(creep.room.name != northRoom) {
+                creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
+            }
+            else if(creep.room.name == northRoom) {
+                if(creep.transfer(targetsTransporter, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(targetsTransporter);
+                }
             }
         }
         else {
-            var southRoom = 'E29N63';
             if(creep.room.name != southRoom) {
               creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
             }
