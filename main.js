@@ -120,7 +120,7 @@ module.exports.loop = function () {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairman', repairing: 'false'});
                 console.log('Spawning new repairman: ' + newName);
             }
-            if(claimers.length < 4) {
+            if(claimers.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: 'claimer'});
                 console.log('Spawning new claimer: ' + newName);
             }
