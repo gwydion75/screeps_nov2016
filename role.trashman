@@ -1,15 +1,42 @@
 var roleTrashman = {
-    run: function(creep){
-        var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
-        filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
-        if (dropenergy) {
-            creep.say('Picking Up');
-            if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(dropenergy);
+    run: function(creep) {
+        if(creep.memory.delivering && creep.carry.energy < 50) {
+            creep.memory.delivering = false;
+            creep.say('Gathering');
+        }
+        if(!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.delivering = true;
+            creep.say('Delivering');
+        }
+        if(creep.memory.delivering) {
+            var targetsTrashman = creep.room.find(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return (structure.structureType == STRUCTURE_EXTENSION ||
+                        structure.structureType == STRUCTURE_SPAWN ||
+                        structure.structureType == STRUCTURE_TOWER ||
+                        structure.structureType == STRUCTURE_STORAGE) && structure.energy < structure.energyCapacity;
+            }
+            });
+            if(targetsTrashman.length > 0) {
+                if(creep.transfer(targetsTrashman[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(targetsTrashman[0]);
+                }
             }
         }
         else {
-            creep.moveTo(Game.flags.Rally1);
+            var dropenergy = creep.pos.findClosestByPath(FIND_DROPPED_ENERGY, {
+            filter: (d) => {return (d.resourceType == RESOURCE_ENERGY)}});
+            if (dropenergy) {
+                creep.say('Picking Up');
+                if (creep.pickup(dropenergy) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(dropenergy);
+                }
+            }
+            else {
+                creep.moveTo(Game.flags.Rally1);
+            }
         }
     }
 }
+
+module.exports = roleTrashman;
