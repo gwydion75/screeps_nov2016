@@ -10,6 +10,7 @@ var roleWallman = require('role.wallman');
 var roleRoadman = require('role.roadman');
 var roleRepairman = require('role.repairman');
 var roleClaimer = require('role.claimer');
+var roleTransporter = require('role.transporter');
 
 module.exports.loop = function () {
     
@@ -61,6 +62,9 @@ module.exports.loop = function () {
             if(creep.memory.role == 'claimer') {
                 roleClaimer.run(creep);
             }
+            if(creep.memory.role == 'transporter') {
+                roleTransporter.run(creep);
+            }
         }
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
@@ -72,6 +76,7 @@ module.exports.loop = function () {
     var roadmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'roadman');
     var repairmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairman');
     var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
+    var transporters = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
 
     if (!Game.spawns['Spawn1'].spawning) {
         if(miners.length < 2) {
@@ -95,6 +100,10 @@ module.exports.loop = function () {
             if(harvesters.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester'});
                 console.log('Spawning new harvester: ' + newName);
+            }
+            if(transporters.length < 4) {
+                var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'transporter'});
+                console.log('Spawning new transporter: ' + newName);
             }
             /*if(builders.length < 1) {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'builder'});
