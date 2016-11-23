@@ -97,7 +97,7 @@ module.exports.loop = function () {
                 console.log('Spawning new SOUTH miner: ' + newName);
             }
         }
-        if(miners.length = 4) {
+        else {
             if(harvesters.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
                 console.log('Spawning new harvester: ' + newName);
