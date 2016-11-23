@@ -18,6 +18,7 @@
 
 var LeftMine = Game.getObjectById('57ef9dfe86f108ae6e60e9f6')
 var RightMine = Game.getObjectById('57ef9dfe86f108ae6e60e9f7')
+var SouthMine = Game.getObjectById('57ef9dfe86f108ae6e60e9fa')
 
 /*var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
 var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');*/
@@ -36,6 +37,11 @@ var roleMiner = {
         else if (creep.memory.mineside == 'right') {
             if(creep.harvest(RightMine) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(RightMine);
+            }
+        }
+        else if (creep.memory.mineside == 'south') {   
+            if(creep.harvest(SouthMine) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(SouthMine);
             }
         }
         /*else {
