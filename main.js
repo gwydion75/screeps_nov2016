@@ -12,21 +12,10 @@ var roleRepairman = require('role.repairman');
 var roleClaimer = require('role.claimer');
 var roleTransporter = require('role.transporter');
 var roleTrashman = require('role.trashman');
+var roleArcher = require('role.archer');
+var roleGuard = require('role.guard');
 
 module.exports.loop = function () {
-    
-    var tower1 = Game.getObjectById('5833ebd0cda4dbd10619a140');
-    if (tower1) {
-        var closestHostile = tower1.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(closestHostile) {
-            tower.attack(closestHostile);
-        }
-        var closestDamagedStructure = tower1.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < [5000] });
-        if(closestDamagedStructure) {
-            tower1.repair(closestDamagedStructure);
-        }
-    }
     
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
@@ -70,6 +59,13 @@ module.exports.loop = function () {
             if(creep.memory.role == 'trashman') {
                 roleTrashman.run(creep);
             }
+            if(creep.memory.role == 'archer') {
+                roleArcher.run(creep);
+            }
+            if(creep.memory.role == 'guard') {
+                roleGuard.run(creep);
+            }           
+ 
         }
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
@@ -83,6 +79,8 @@ module.exports.loop = function () {
     var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
     var transporters = _.filter(Game.creeps, (creep) => creep.memory.role == 'transporter');
     var trashmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'trashman');
+    var guards = _.filter(Game.creeps, (creep) => creep.memory.role == 'guard');
+    var archers = _.filter(Game.creeps, (creep) => creep.memory.role == 'archer');
 
     if (!Game.spawns['Spawn1'].spawning) {
         if(miners.length < 4) {
@@ -103,6 +101,14 @@ module.exports.loop = function () {
             }
         }
         else {
+            if(archers.length < 2) {
+                var newName = Game.spawns['Spawn1'].createCreep([RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK,TOUGH,MOVE,MOVE], undefined, {role: 'archer'});
+                console.log('Spawning new archer: ' + newName);
+            }
+            if(guards.length < 2) {
+                var newName = Game.spawns['Spawn1'].createCreep([ATTACK,ATTACK,ATTACK,TOUGH,TOUGH,TOUCH,MOVE,MOVE,MOVE], undefined, {role: 'guard'});
+                console.log('Spawning new harvester: ' + newName);
+            }
             if(harvesters.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'harvester'});
                 console.log('Spawning new harvester: ' + newName);
