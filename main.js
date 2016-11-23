@@ -9,8 +9,7 @@ var roleMaint = require('role.maint');
 var roleWallman = require('role.wallman');
 var roleRoadman = require('role.roadman');
 var roleRepairman = require('role.repairman');
-
-//testing
+var roleClaimer = require('role.claimer');
 
 module.exports.loop = function () {
     
@@ -60,6 +59,9 @@ module.exports.loop = function () {
         if(creep.memory.role == 'repairman') {
             roleRepairman.run(creep);
         }
+        if(creep.memory.role == 'claimer') {
+            roleClaimer.run(creep);
+        }
     }
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
@@ -70,7 +72,12 @@ module.exports.loop = function () {
     var wallmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallman');
     var roadmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'roadman');
     var repairmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairman');
+    var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
     
+    if(claimers.length < 10) {
+        var newName = Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: 'claimer'});
+        console.log('Spawning new claimer: ' + newName);
+    }
     if(builders.length < 4) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'builder'});
         console.log('Spawning new builder: ' + newName);
