@@ -110,7 +110,7 @@ module.exports.loop = function () {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: 'builder'});
                 console.log('Spawning new builder: ' + newName);
             }*/
-            if(upgraders.length < 6) {
+            if(upgraders.length < 1) {
                 var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'upgrader'});
                 console.log('Spawning new upgrader: ' + newName);
             }
