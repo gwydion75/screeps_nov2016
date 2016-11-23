@@ -4,10 +4,10 @@
  * @param creep
  */
 var guard = {
-	parts: [
+	/*parts: [
 		[Game.TOUGH, Game.MOVE, Game.ATTACK, Game.ATTACK]
 	],
-
+*/
 	action: function()
 	{
 		var creep = this.creep;
