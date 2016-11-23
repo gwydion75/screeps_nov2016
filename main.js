@@ -103,7 +103,7 @@ module.exports.loop = function () {
                 console.log('Spawning new RIGHT miner: ' + newName);
             }
             if(minersSouth.length <0) {
-                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: 'miner', mineside: 'south'});
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,MOVE,MOVE], undefined, {role: 'miner', mineside: 'south'});
                 console.log('Spawning new SOUTH miner: ' + newName);
             }
         }
