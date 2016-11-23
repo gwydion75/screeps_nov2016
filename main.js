@@ -1,4 +1,4 @@
-require('screeps-perf')();
+//require('screeps-perf')();
 
 
 var roleHarvester = require('role.harvester');
