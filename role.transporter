@@ -1,4 +1,4 @@
-var targetsTransporter = Game.getObjectByID('58357720fe324f3b26ca7ba8');
+var targetsTransporter = Game.getObjectById('58357720fe324f3b26ca7ba8');
 var roleTransporter = {
 
     run: function(creep) {
