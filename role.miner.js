@@ -16,9 +16,9 @@
  * mod.thing == 'a thing'; // true
  */
 
-var LeftMine = Game.getObjectById('57ef9dfe86f108ae6e60e9f6')
-var RightMine = Game.getObjectById('57ef9dfe86f108ae6e60e9f7')
-var SouthMine = Game.getObjectById('57ef9dfe86f108ae6e60e9fa')
+var LeftMine = Game.getObjectById('57ef9dfe86f108ae6e60e9f6');
+var RightMine = Game.getObjectById('57ef9dfe86f108ae6e60e9f7');
+var SouthMine = Game.getObjectById('57ef9dfe86f108ae6e60e9fa');
 
 /*var minersLeft = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'left');
 var minersRight = _.filter(Game.creeps, (creep) => creep.memory.mineside == 'right');*/
