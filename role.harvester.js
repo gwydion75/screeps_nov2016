@@ -2,13 +2,13 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.memory.gathering && creep.carry.energy == 0) {
-            creep.memory.gathering = true;
-            creep.say('Gathering');
-        }
-        if(!creep.memory.gathering && creep.carry.energy == creep.carryCapacity) {
-            creep.memory.gathering = false;
+        if(creep.memory.delivering && creep.carry.energy == 0) {
+            creep.memory.delivering = true;
             creep.say('Delivering');
+        }
+        if(!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.delivering = false;
+            creep.say('Gathering');
         }
         if(creep.memory.gathering) {
             var Container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
