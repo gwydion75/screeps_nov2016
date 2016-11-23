@@ -4,7 +4,7 @@ var roleClaimer = {
         if(creep.room.name != southRoom) {
             creep.moveTo(creep.pos.findClosestByPath(creep.room.findExitTo(southRoom)));
         }
-        if(creep.room.name == southRoom) {
+        else if(creep.room.name == southRoom) {
             var range = creep.pos.getRangeTo(creep.room.controller);
             if (range>1) {
                 creep.moveTo(creep.room.controller);
