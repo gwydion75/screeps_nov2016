@@ -10,9 +10,9 @@ var guard = {
 */
 	run: function(creep) {
 		var targetsGuard = creep.room.find(Game.HOSTILE_CREEPS);
-		if (targets.length) {
-			creep.moveTo(targets[0]);
-			creep.attack(targets[0]);
+		if (targetsGuard.length) {
+			creep.moveTo(targetsGuard[0]);
+			creep.attack(targetsGuard[0]);
 		}
 		else {
 			
