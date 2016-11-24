@@ -1,6 +1,6 @@
 var roleCleric = {
 	run: function(creep) {
-            	var targetsCleric = creep.pos.findNearest(Game.MY_CREEPS, {
+            	var targetsCleric = creep.room.find(Game.MY_CREEPS, {
                 filter: (creep) => { 
                     return (creep.hits < creep.hitsMax)
                 }});
