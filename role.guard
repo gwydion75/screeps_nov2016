@@ -1,13 +1,4 @@
-/**
- * The Guard hasn't been improved in a while, I've mostly just moved on to archers for now. I'll come back and
- * work on this one later
- * @param creep
- */
 var guard = {
-	/*parts: [
-		[Game.TOUGH, Game.MOVE, Game.ATTACK, Game.ATTACK]
-	],
-*/
 	run: function(creep) {
 		var targetsGuard = creep.room.find(Game.HOSTILE_CREEPS);
 		if (targetsGuard.length) {
