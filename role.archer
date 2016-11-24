@@ -1,5 +1,6 @@
 var roleArcher = {
 	run: function(creep) {
+		creep.moveTo(Game.flags.Rally1);
 		/*var target = creep.room.find(Game.HOSTILE_CREEPS);
 		if(target !== null) {
 			creep.rangedAttack(target);
