@@ -14,6 +14,7 @@ var roleTransporter = require('role.transporter');
 var roleTrashman = require('role.trashman');
 var roleArcher = require('role.archer');
 var roleGuard = require('role.guard');
+var roleCleric = require('role.cleric');
 
 module.exports.loop = function () {
     
@@ -37,6 +38,9 @@ module.exports.loop = function () {
             }*/
             if(creep.memory.role == 'wallman') {
                 roleWallman.run(creep);
+            }
+            if(creep.memory.role == 'cleric') {
+                roleCleric.run(creep);
             }
             if(creep.memory.role == 'roadman') {
                 roleRoadman.run(creep);
@@ -81,6 +85,7 @@ module.exports.loop = function () {
     var trashmans = _.filter(Game.creeps, (creep) => creep.memory.role == 'trashman');
     var guards = _.filter(Game.creeps, (creep) => creep.memory.role == 'guard');
     var archers = _.filter(Game.creeps, (creep) => creep.memory.role == 'archer');
+    var clerics = _.filter(Game.creeps, (creep) => creep.memory.role == 'cleric');
 
     if (!Game.spawns['Spawn1'].spawning) {
         if(miners.length < 4) {
@@ -104,6 +109,10 @@ module.exports.loop = function () {
             if(archers.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK,TOUGH,MOVE,MOVE], undefined, {role: 'archer'});
                 console.log('Spawning new archer: ' + newName);
+            }
+            if(clerics.length < 2) {
+                var newName = Game.spawns['Spawn1'].createCreep([MOVE,MOVE,HEAL,HEAL,TOUGH,TOUGH], undefined, {role: 'cleric'});
+                console.log('Spawning new cleric: ' + newName);
             }
             if(guards.length < 2) {
                 var newName = Game.spawns['Spawn1'].createCreep([ATTACK,ATTACK,ATTACK,TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE], undefined, {role: 'guard'});
