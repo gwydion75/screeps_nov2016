@@ -10,7 +10,7 @@ var roleCleric = {
 			}
 		}
 		else {
-			creep.moveTo(Game.flags.Rally1);
+			//creep.moveTo(Game.flags.Rally1);
 		}
 	}
 };
