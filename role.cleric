@@ -4,8 +4,9 @@ var roleCleric = {
                 filter: function(hurtCreep) { 
                     return (hurtCreep.hits < hurtCreep.hitsMax);
                 }});
-		creep.say('Blah');
+		
 		if (targetsCleric.length) {
+			creep.say('Blah');
 			if(creep.heal(targetsCleric[0]) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(targetsCleric[0]);
 				creep.say('Healing');
