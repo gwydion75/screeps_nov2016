@@ -15,7 +15,7 @@ var roleCleric = {
 			//creep.heal(targetsCleric[0]);
 		}
 		else {
-			//creep.moveTo(Game.flags.Rally1);
+			creep.moveTo(Game.flags.Rally1);
 		}
 	}
 };
