@@ -1,8 +1,8 @@
 var roleCleric = {
 	run: function(creep) {
             	var targetsCleric = creep.room.find(Game.MY_CREEPS, {
-                filter: (creep) => { 
-                    return (creep.hits < creep.hitsMax)
+                filter: (hurtCreep) => { 
+                    return (hurtCreep.hits < hurtCreep.hitsMax)
                 }});
 		if (targetsCleric.length) {
 			creep.moveTo(targetsCleric[0]);
