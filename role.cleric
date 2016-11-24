@@ -3,7 +3,7 @@ var roleCleric = {
             	var targetsCleric = creep.pos.findNearest(Game.MY_CREEPS, {
                 filter: (creep) => { 
                     return (creep.hits < creep.hitsMax)
-                }
+                }});
 		if (targetsCleric.length) {
 			creep.moveTo(targetsCleric[0]);
 			creep.heal(targetsCleric[0]);
