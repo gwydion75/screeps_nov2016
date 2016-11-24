@@ -1,18 +1,15 @@
 var roleArcher = {
 	run: function(creep) {
-		creep.moveTo(Game.flags.Rally1);
-		/*var target = creep.room.find(Game.HOSTILE_CREEPS);
-		if(target !== null) {
-			creep.rangedAttack(target);
+		
+	    var targetsArcher = creep.room.find(Game.HOSTILE_CREEPS);
+		if (targetsArcher.length) {
+			creep.moveTo(targetsArcher[0]);
+			creep.rangedAttack(targetsArcher[0]);
 		}
-
-		//If there's not a target near by, let's go search for a target if need be
-		if(target === null)
-			return this.rest();
-
-		this.kite(target);
-		creep.rangedAttack(target);*/
+		else {
+			creep.moveTo(Game.flags.Rally1);
+		}
 	}
-};
+}
 
 module.exports = roleArcher;
