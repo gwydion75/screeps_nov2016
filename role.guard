@@ -8,7 +8,7 @@ var guard = {
 		[Game.TOUGH, Game.MOVE, Game.ATTACK, Game.ATTACK]
 	],
 */
-	action: function()
+	run: function()
 	{
 		var creep = this.creep;
 
