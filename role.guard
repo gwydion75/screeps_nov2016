@@ -8,17 +8,14 @@ var guard = {
 		[Game.TOUGH, Game.MOVE, Game.ATTACK, Game.ATTACK]
 	],
 */
-	run: function()
-	{
-		var creep = this.creep;
-
-		var targets = creep.room.find(Game.HOSTILE_CREEPS);
+	run: function(creep) {
+		var targetsGuard = creep.room.find(Game.HOSTILE_CREEPS);
 		if (targets.length) {
 			creep.moveTo(targets[0]);
 			creep.attack(targets[0]);
 		}
 		else {
-			this.rest();
+			
 		}
 	}
 };
