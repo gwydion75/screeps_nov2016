@@ -2,9 +2,9 @@ var roleCleric = {
 	run: function(creep) {
             	var targetsCleric = creep.room.find(Game.MY_CREEPS, {
                 filter: function(hurtCreep) { 
-                    return (hurtCreep.hits < hurtCreep.hitsMax)
+                    return (hurtCreep.hits < hurtCreep.hitsMax);
                 }});
-		if (targetsCleric.length > 0) {
+		if (targetsCleric.length) {
 			if(creep.heal(targetsCleric[0]) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(targetsCleric[0]);
 			}
